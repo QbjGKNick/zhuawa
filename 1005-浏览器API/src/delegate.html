@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>这是0</li>
+    <li>这是1</li>
+    <li>这是2</li>
+    <li>这是3</li>
+    <li>这是4</li>
+    <li>这是5</li>
+    <li>这是6</li>
+    <li>这是7</li>
+    <li>这是8</li>
+    <li>这是9</li>
+    <li>这是10</li>
+  </ul>
+  <script>
+    const ul = document.querySelector('ul')
+    ul.addEventListener('click', function(e) {
+      const { target } = e
+      if (target.tagName.toLowerCase() === 'li') {
+        const liList = this.querySelectorAll('li')
+        const index = Array.prototype.indexOf.call(liList, target)
+        alert(index)
+      }
+    })
+  </script>
+</body>
+</html>

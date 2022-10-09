@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件</title>
+</head>
+<body>
+  <div id="parent" class="flex-center">
+    parent
+    <div id="normal" class="flex-center">
+      normal
+      <div id="son" class="flex-center">
+        son
+        <a href="https://www.baidu.com" id="a_baidu">点我啊</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    const parent = document.getElementById('parent')
+    const normal = document.getElementById('normal')
+    const son = document.getElementById('son')
+    const a_baidu = document.getElementById('a_baidu')
+
+    // 冒泡
+    window.addEventListener('click', function(e) {
+      console.log('window 冒泡')
+    })
+    parent.addEventListener('click', function(e) {
+      console.log('parent 冒泡')
+    })
+    normal.addEventListener('click', function(e) {
+      // e.stopPropagation()
+      console.log('normal1 冒泡')
+    })
+    normal.addEventListener('click', function(e) {
+      // e.stopPropagation()
+      e.stopImmediatePropagation()
+      console.log('normal2 冒泡')
+    })
+    normal.addEventListener('click', function(e) {
+      // e.stopPropagation()
+      console.log('normal3 冒泡')
+    })
+    son.addEventListener('click', function(e) {
+      console.log('son 冒泡')
+    })
+    a_baidu.addEventListener('click', function(e) {
+      console.log('a_baidu 冒泡')
+    })
+
+    // 捕获
+    window.addEventListener('click', function(e) {
+      console.log('window 捕获', e.target.id, e.currentTarget.id)
+    }, true)
+    parent.addEventListener('click', function(e) {
+      console.log('parent 捕获', e.target.id, e.currentTarget.id)
+    }, true)
+    normal.addEventListener('click', function(e) {
+      console.log('normal 捕获', e.target.id, e.currentTarget.id)
+    }, true)
+    son.addEventListener('click', function(e) {
+      console.log('son 捕获', e.target.id, e.currentTarget.id)
+    }, true)
+    a_baidu.addEventListener('click', function(e) {
+      e.preventDefault()
+      console.log('a_baidu 捕获', e.target.id, e.currentTarget.id)
+    }, true)
+  </script>
+
+  <style>
+    #parent {
+      height: 600px;
+      width: 600px;
+    }
+
+    .flex-center {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 100px;
+      background-color: rgba(0, 200, 200, 0.4);
+    }
+  </style>
+</body>
+</html>

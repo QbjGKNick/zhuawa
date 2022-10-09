@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <div id="status"></div>
+    <div id="log"></div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      var status = document.getElementById('status')
+      var log = document.getElementById('log')
+
+      function updateOnlineStatus(event) {
+        status.innerHTML = navigator.onLine ? 'online' : 'offline'
+        log.insertAdjacentHTML('beforeend', `Event: ${event.type};`)
+      }
+
+      window.addEventListener('online', updateOnlineStatus)
+      window.addEventListener('offline', updateOnlineStatus)
+    })
+
+    var { connection } = navigator
+    var type = connection.effectiveType
+
+    function updateConnectionStatus() {
+      console.log(`网络从 ${type} 切换至 ${connection.effectiveType}`)
+      type = connection.effectiveType
+    }
+
+    connection.addEventListener('change', updateConnectionStatus)
+  </script>
+</body>
+</html>
