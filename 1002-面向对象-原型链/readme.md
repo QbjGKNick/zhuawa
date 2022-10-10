@@ -1,3 +1,64 @@
+# OOP
+
+## 面向过程与面向对象
+
+结构体
+
+由一批数据组合而成的结构
+```c
+struct {
+  int id;
+  char b;
+  double score
+} student
+```
+
+### OOP 面向对象 -- 面向过程
+学好面向对象
+- Java
+- 设计模式
+
+一切皆对象
+
+#### example
+我 吃 回锅肉
+
+##### 从面向过程
+- 养猪
+- 杀猪 -- pork
+- 切菜，做饭 -- overCooked meat
+
+##### 从面向对象的角度
+- 我 -- 吃 -- 回锅肉
+- 回锅肉从哪里来？
+
+```js
+class Consumer extends Person {
+  eat(food: Dish) {
+    food.beEat()
+  }
+}
+
+class Chief extends Person {
+  cook(food: Pork) {
+    food.cooked()
+  }
+}
+
+class Food() {}
+
+class Pork extend Food() {
+  cooked()
+}
+
+class Dish extends Food() {
+  beEat() {
+    
+  }
+}
+
+```
+
 ## 创建一个对象，有几种方式？
 
 ### Object.create()
