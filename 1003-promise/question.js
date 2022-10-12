@@ -45,3 +45,18 @@ const promisePipe = (proArr, concurrent) => {
 }
 
 promisePipe(proArr, 10)
+
+function PromiseAll(args) {
+  return new Promise((resolve, reject) => {
+    let len = args.length, count = 0
+    let resultArray = new Array(len)
+
+    for(let i = 0; i < len; i++) {
+      Promise.resolve(args[i]).then(res => {
+        resultArray[i] = res
+        count++
+        if (count === len) resolve()
+      }).catch(err => reject(err))
+    }
+  })
+}
