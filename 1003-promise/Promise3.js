@@ -66,6 +66,7 @@ JPromise.prototype.then = function(onFulfilled, onRejected) {
     return promise2 = new JPromise((resolve, reject) => {
       this.onFulfilledArray.push(() => {
         try {
+          // 重点中的重点，实现链式调用的
           let result = onFulfilled(this.value)
           resolve(result)
         } catch (e) {
