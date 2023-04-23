@@ -61,4 +61,32 @@ TCP & UDP 区别
 
 Client Server 客服端 服务端协议
 
+Client Proxy Server
+
+起始行 + 空行 + 实体
+
+请求报文：method + path + HTTP 版本号 GET /shop/get HTTP/1.1
+响应报文：版本号 + 状态码 + 原因
+
+HTTP/1.1 404 Not Found
+
+GET POST HEAD PUT
+
+GET POST 请求的区别
+
+- 安全性 GET: https://jqb.com/shop/get?id=1 POST: form-data
+- 编码规范 url 编码
+- 缓存
+
+DNS https://www.jqb.com -> 服务器的 ip 地址
+
+根域：.
+顶级域名：
+组织域名：edu, .com
+地理域名： .cn, .hk
+二级域名： https://person.jqb.com
+三级域名：
+
 ## websocket
+
+H5 新出现的技术
